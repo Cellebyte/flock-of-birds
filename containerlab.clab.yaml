@@ -4,8 +4,8 @@ topology:
     bird-1.6.8:
       kind: linux
       image: docker.io/library/bird:1.6.8
-      #shm-size: 4gib
-      #cpu-set: 2-9
+      shm-size: 1gib
+      cpu-set: 2-5
       binds:
         - containers/bird-1.6.8/etc/bird/bird.conf:/etc/bird/bird.conf
         - containers/bird-1.6.8//etc/bird/bird6.conf:/etc/bird/bird6.conf
@@ -13,16 +13,16 @@ topology:
     bird-2.17.2:
       kind: linux
       image: docker.io/library/bird:2.17.2
-      #shm-size: 4gib
-      #cpu-set: 2-9
+      shm-size: 1gib
+      cpu-set: 2-5
       binds:
         - containers/bird-2.17.2/etc/bird/bird.conf:/etc/bird/bird.conf
         - containers/bird-2.17.2/etc/netplan/netplan.yaml:/etc/netplan/00-netplan.yaml
     bird-3.1.4:
       kind: linux
       image: docker.io/library/bird:3.1.4
-      #shm-size: 4gib
-      #cpu-set: 2-9
+      shm-size: 1gib
+      cpu-set: 2-5
       binds:
         - containers/bird-3.1.4/etc/netplan/netplan.yaml:/etc/netplan/00-netplan.yaml
         - containers/bird-3.1.4/etc/bird/bird.conf:/etc/bird/bird.conf
@@ -47,8 +47,8 @@ topology:
     bngblaster-0.9.27:
       kind: linux
       image: docker.io/library/bngblaster:0.9.27
-      #shm-size: 8gib
-      #cpu-set: 10-15
+      shm-size: 4gib
+      cpu-set: 10-15
       binds:
         - containers/bngblaster-0.9.27/etc/netplan/netplan.yaml:/etc/netplan/00-netplan.yaml
         - containers/bngblaster-0.9.27/etc/bngblaster:/etc/bngblaster

@@ -22,26 +22,26 @@
         ],
         "network": [
             {
-                "__comment__": "bird-3.14.1 TX",
+                "__comment__": "bird-3.1.4 TX",
                 "interface": "bird-3.1.4",
-                "address": "192.0.2.29/30",
+                "address": "192.0.2.31/31",
                 "gateway": "192.0.2.30",
                 "address-ipv6": "2001:db8:100::31/127",
                 "gateway-ipv6": "2001:db8:100::30"
             },
             {
-                "__comment__": "bird-3.14.1 RX1",
-                "interface": "bird-3.14.1-rx1",
-                "address": "192.0.2.33/30",
-                "gateway": "192.0.2.34",
+                "__comment__": "bird-3.1.4 RX1",
+                "interface": "bird-3.1.4-rx1",
+                "address": "192.0.2.33/31",
+                "gateway": "192.0.2.32",
                 "address-ipv6": "2001:db8:100::33/127",
                 "gateway-ipv6": "2001:db8:100::32"
             },
             {
-                "__comment__": "bird-3.14.1 RX2",
-                "interface": "bird-3.14.1-rx2",
-                "address": "192.0.2.37/31",
-                "gateway": "192.0.2.38",
+                "__comment__": "bird-3.1.4 RX2",
+                "interface": "bird-3.1.4-rx2",
+                "address": "192.0.2.35/31",
+                "gateway": "192.0.2.34",
                 "address-ipv6": "2001:db8:100::35/127",
                 "gateway-ipv6": "2001:db8:100::34"
             }
