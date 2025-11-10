@@ -3,6 +3,7 @@
 BNG Blaster - BGP Convergence Report 
 
 Author: Christian Giese
+Author: Marcel Fest
 
 Copyright (C) 2020-2024, RtBrick, Inc.
 SPDX-License-Identifier: BSD-3-Clause

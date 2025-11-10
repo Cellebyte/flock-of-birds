@@ -60,15 +60,31 @@ topology:
     - endpoints: ["bird-3.1.4:uplink", "bngblaster-0.9.27:bird-3.1.4"]
     # - endpoints: ["frr-10.4.1:uplink", "bngblaster-0.9.27:frr-10.4.1"]
     # - endpoints: ["gobgp-3.36.0:uplink", "bngblaster-0.9.27:gobgp-3.36.0"]
+
     # RX1
     - endpoints: ["bird-1.6.8:uplink-rx1", "bngblaster-0.9.27:bird-1.6.8-rx1"]
     - endpoints: ["bird-2.17.2:uplink-rx1", "bngblaster-0.9.27:bird-2.17.2-rx1"]
     - endpoints: ["bird-3.1.4:uplink-rx1", "bngblaster-0.9.27:bird-3.1.4-rx1"]
     # - endpoints: ["frr-10.4.1:uplink-rx1", "bngblaster-0.9.27:frr-10.4.1-rx1"]
     # - endpoints: ["gobgp-3.36.0:uplink-rx1", "bngblaster-0.9.27:gobgp-3.36.0-rx1"]
+
     # RX2
     - endpoints: ["bird-1.6.8:uplink-rx2", "bngblaster-0.9.27:bird-1.6.8-rx2"]
     - endpoints: ["bird-2.17.2:uplink-rx2", "bngblaster-0.9.27:bird-2.17.2-rx2"]
     - endpoints: ["bird-3.1.4:uplink-rx2", "bngblaster-0.9.27:bird-3.1.4-rx2"]
     # - endpoints: ["frr-10.4.1:uplink-rx2", "bngblaster-0.9.27:frr-10.4.1-rx2"]
     # - endpoints: ["gobgp-3.36.0:uplink-rx2", "bngblaster-0.9.27:gobgp-3.36.0-rx2"]
+
+    # RX3
+    - endpoints: ["bird-1.6.8:uplink-rx3", "bngblaster-0.9.27:bird-1.6.8-rx3"]
+    - endpoints: ["bird-2.17.2:uplink-rx3", "bngblaster-0.9.27:bird-2.17.2-rx3"]
+    - endpoints: ["bird-3.1.4:uplink-rx3", "bngblaster-0.9.27:bird-3.1.4-rx3"]
+    # - endpoints: ["frr-10.4.1:uplink-rx3", "bngblaster-0.9.27:frr-10.4.1-rx3"]
+    # - endpoints: ["gobgp-3.36.0:uplink-rx3", "bngblaster-0.9.27:gobgp-3.36.0-rx3"]
+
+    # RX4
+    - endpoints: ["bird-1.6.8:uplink-rx4", "bngblaster-0.9.27:bird-1.6.8-rx4"]
+    - endpoints: ["bird-2.17.2:uplink-rx4", "bngblaster-0.9.27:bird-2.17.2-rx4"]
+    - endpoints: ["bird-3.1.4:uplink-rx4", "bngblaster-0.9.27:bird-3.1.4-rx4"]
+    # - endpoints: ["frr-10.4.1:uplink-rx4", "bngblaster-0.9.27:frr-10.4.1-rx4"]
+    # - endpoints: ["gobgp-3.36.0:uplink-rx4", "bngblaster-0.9.27:gobgp-3.36.0-rx4"]

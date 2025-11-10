@@ -17,6 +17,16 @@ network:
       addresses:
       - 192.0.2.24/31
       - 2001:db8:100::24/127
+    uplink-rx3:
+      mtu: 9000
+      addresses:
+      - 192.0.2.26/31
+      - 2001:db8:100::26/127
+    uplink-rx4:
+      mtu: 9000
+      addresses:
+      - 192.0.2.28/31
+      - 2001:db8:100::28/127
   dummy-devices:
     lo42:
       addresses:
