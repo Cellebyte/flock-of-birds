@@ -34,3 +34,5 @@ bgpupdate -f "/tmp/${ROUTER}_ipv4_rx2-withdraw.bgp" --local-pref 10 -n "${RX2_IP
 # IPv6 updates for RX2
 bgpupdate -f "/tmp/${ROUTER}_ipv6_rx2.bgp" --local-pref 10 -n "${RX2_IP6}" -N 1 -p 2001:db8:ffff::/76 -P 900000 --end-of-rib
 bgpupdate -f "/tmp/${ROUTER}_ipv6_rx2-withdraw.bgp" --local-pref 10 -n "${RX2_IP6}" -N 1 -p 2001:db8:ffff::/76 -P 900000 --withdraw --end-of-rib
+
+echo "convergence.py --host localhost --router ${ROUTER} --rx1-ip ${RX1_IP} --rx1-ip6 ${RX1_IP6} --rx2-ip ${RX2_IP} --rx2-ip6 ${RX2_IP6}"
