@@ -1,0 +1,15 @@
+# asn: 4200000030
+network:
+  version: 2
+  ethernets:
+    uplink:
+      link-local: []
+      addresses:
+      - 192.0.2.30/31
+      - 2001:db8:100::30/127
+  dummy-devices:
+    lo42:
+      link-local: []
+      addresses:
+      - 198.51.100.3/32
+      - 2001:db8::3/128

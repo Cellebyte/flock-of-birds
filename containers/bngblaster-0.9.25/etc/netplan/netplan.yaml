@@ -1,0 +1,50 @@
+# asn: 4200000255
+network:
+  version: 2
+  ethernets:
+    bird-1.6.8:
+      dhcp4: false
+      dhcp6: false
+      link-local: []
+      mtu: 9000
+      # addresses:
+      # - 192.0.2.11/31
+      # - 2001:db8:100::11/127
+    bird-2.16.1:
+      dhcp4: false
+      dhcp6: false
+      link-local: []
+      mtu: 9000
+      # addresses:
+      # - 192.0.2.21/31
+      # - 2001:db8:100::21/127
+    bird-3.1.4:
+      dhcp4: false
+      dhcp6: false
+      link-local: []
+      mtu: 9000
+      # addresses:
+      # - 192.0.2.31/31
+      # - 2001:db8:100::31/127
+    frr-10.4.1:
+      dhcp4: false
+      dhcp6: false
+      link-local: []
+      mtu: 9000
+      # addresses:
+      # - 192.0.2.101/31
+      # - 2001:db8:100::101/127
+    gobgp-3.36.0:
+      dhcp4: false
+      dhcp6: false
+      link-local: []
+      mtu: 9000
+      # addresses:
+      # - 192.0.2.201/31
+      # - 2001:db8:100::201/127
+  dummy-devices:
+    lo42:
+      link-local: []
+      addresses:
+      - 198.51.100.255/32
+      - 2001:db8::ffff/128

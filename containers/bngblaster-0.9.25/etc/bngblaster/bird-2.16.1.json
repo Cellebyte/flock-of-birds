@@ -1,0 +1,29 @@
+{
+    "interfaces": {
+        "network": {
+            "interface": "bird-2.16.1",
+            "address": "192.0.2.21/31",
+            "gateway": "192.0.2.20",
+            "address-ipv6": "2001:db8:100::21/127",
+            "gateway-ipv6": "2001:db8:100::20"
+        }
+    },
+    "bgp": [
+        {
+            "local-address": "192.0.2.21",
+            "peer-address": "192.0.2.20",
+            "raw-update-file": "/opt/bngblaster/bird-2.16.1.bgp",
+            "local-as": 4200000255,
+            "peer-as": 4200000020,
+            "family": ["ipv4-unicast", "ipv6-unicast"]
+        },
+        {
+            "local-address": "2001:db8:100::21",
+            "peer-address": "2001:db8:100::20",
+            "raw-update-file": "/opt/bngblaster/bird-2.16.1.bgp",
+            "local-as": 4200000255,
+            "peer-as": 4200000020,
+            "family": ["ipv4-unicast", "ipv6-unicast"]
+        }
+    ]
+}
