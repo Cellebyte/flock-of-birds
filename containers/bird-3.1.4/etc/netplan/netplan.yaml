@@ -4,9 +4,22 @@ network:
   ethernets:
     uplink:
       link-local: []
+      mtu: 9000
       addresses:
       - 192.0.2.30/31
       - 2001:db8:100::30/127
+    uplink-rx1:
+      link-local: []
+      mtu: 9000
+      addresses:
+      - 192.0.2.32/31
+      - 2001:db8:100::32/127
+    uplink-rx2:
+      link-local: []
+      mtu: 9000
+      addresses:
+      - 192.0.2.34/31
+      - 2001:db8:100::34/127
   dummy-devices:
     lo42:
       link-local: []

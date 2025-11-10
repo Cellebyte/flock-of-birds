@@ -54,8 +54,21 @@ topology:
         - containers/bngblaster-0.9.25/etc/bngblaster:/etc/bngblaster
         - containers/bngblaster-0.9.25/usr/local/bin/:/usr/local/bin
   links:
+    # TX
     - endpoints: ["bird-1.6.8:uplink", "bngblaster-0.9.25:bird-1.6.8"]
     - endpoints: ["bird-2.16.1:uplink", "bngblaster-0.9.25:bird-2.16.1"]
     - endpoints: ["bird-3.1.4:uplink", "bngblaster-0.9.25:bird-3.1.4"]
     - endpoints: ["frr-10.4.1:uplink", "bngblaster-0.9.25:frr-10.4.1"]
     - endpoints: ["gobgp-3.36.0:uplink", "bngblaster-0.9.25:gobgp-3.36.0"]
+    # RX1
+    - endpoints: ["bird-1.6.8:uplink-rx1", "bngblaster-0.9.25:bird-1.6.8-rx1"]
+    - endpoints: ["bird-2.16.1:uplink-rx1", "bngblaster-0.9.25:bird-2.16.1-rx1"]
+    - endpoints: ["bird-3.1.4:uplink-rx1", "bngblaster-0.9.25:bird-3.1.4-rx1"]
+    - endpoints: ["frr-10.4.1:uplink-rx1", "bngblaster-0.9.25:frr-10.4.1-rx1"]
+    - endpoints: ["gobgp-3.36.0:uplink-rx1", "bngblaster-0.9.25:gobgp-3.36.0-rx1"]
+    # RX2
+    - endpoints: ["bird-1.6.8:uplink-rx2", "bngblaster-0.9.25:bird-1.6.8-rx2"]
+    - endpoints: ["bird-2.16.1:uplink-rx2", "bngblaster-0.9.25:bird-2.16.1-rx2"]
+    - endpoints: ["bird-3.1.4:uplink-rx2", "bngblaster-0.9.25:bird-3.1.4-rx2"]
+    - endpoints: ["frr-10.4.1:uplink-rx2", "bngblaster-0.9.25:frr-10.4.1-rx2"]
+    - endpoints: ["gobgp-3.36.0:uplink-rx2", "bngblaster-0.9.25:gobgp-3.36.0-rx2"]

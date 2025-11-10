@@ -37,6 +37,8 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
        libjansson4 \
        libpcap-dev \
        python3-scapy \
+       python3-matplotlib \
+       python3-requests \
     && apt-get clean \
     && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
     && rm -rf /var/lib/apt/lists/* \
@@ -45,6 +47,10 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
 RUN wget -O /tmp/bngblaster.deb https://github.com/rtbrick/bngblaster/releases/download/0.9.25/bngblaster-0.9.25-ubuntu-24.04_amd64.deb \
     && dpkg -i /tmp/bngblaster.deb \
     && rm -f /tmp/bngblaster.deb
+
+RUN wget -O /tmp/bngblaster-controller.deb https://github.com/rtbrick/bngblaster-controller/releases/download/0.1.2/bngblaster-controller_0.1.2_amd64.deb \
+    && dpkg -i /tmp/bngblaster-controller.deb \
+    && rm -f /tmp/bngblaster-controller.deb
 
 RUN ln -s /lib/systemd/system/systemd-networkd.service /etc/systemd/system/dbus-org.freedesktop.network1.service \
     && ln -s /lib/systemd/system/systemd-networkd.service /etc/systemd/system/multi-user.target.wants/systemd-networkd.service \

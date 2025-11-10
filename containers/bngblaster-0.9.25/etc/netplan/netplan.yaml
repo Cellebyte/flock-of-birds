@@ -26,6 +26,57 @@ network:
       # addresses:
       # - 192.0.2.31/31
       # - 2001:db8:100::31/127
+
+    bird-1.6.8-rx1:
+      dhcp4: false
+      dhcp6: false
+      link-local: []
+      mtu: 9000
+      # addresses:
+      # - 192.0.2.13/31
+      # - 2001:db8:100::13/127
+    bird-2.16.1-rx1:
+      dhcp4: false
+      dhcp6: false
+      link-local: []
+      mtu: 9000
+      # addresses:
+      # - 192.0.2.23/31
+      # - 2001:db8:100::23/127
+    bird-3.1.4-rx1:
+      dhcp4: false
+      dhcp6: false
+      link-local: []
+      mtu: 9000
+      # addresses:
+      # - 192.0.2.33/31
+      # - 2001:db8:100::33/127
+
+    bird-1.6.8-rx2:
+      dhcp4: false
+      dhcp6: false
+      link-local: []
+      mtu: 9000
+      # addresses:
+      # - 192.0.2.15/31
+      # - 2001:db8:100::15/127
+    bird-2.16.1-rx2:
+      dhcp4: false
+      dhcp6: false
+      link-local: []
+      mtu: 9000
+      # addresses:
+      # - 192.0.2.25/31
+      # - 2001:db8:100::25/127
+    bird-3.1.4-rx2:
+      dhcp4: false
+      dhcp6: false
+      link-local: []
+      mtu: 9000
+      # addresses:
+      # - 192.0.2.35/31
+      # - 2001:db8:100::35/127
+
     frr-10.4.1:
       dhcp4: false
       dhcp6: false
