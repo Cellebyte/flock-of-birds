@@ -77,8 +77,8 @@ def bgp_update(bbl: bngblaster.bngblaster, local_address: str, update_file=None,
         arguments["file"] = update_file
         bbl.command("bgp-raw-update", arguments)
 
-    for _ in range(int(timeout/3)):
-        time.sleep(3)
+    for _ in range(int(timeout/1)):
+        time.sleep(1)
         try: 
             response = bbl.command("bgp-sessions")
             for session in response["bgp-sessions"]: 
@@ -108,16 +108,12 @@ def side_quest(bbl: bngblaster.bngblaster, log: logging.Logger, router: str, rou
     while True:
         session = bgp_update(bbl, routers["rx3"][link_protocol], f"/tmp/{router}_{link_protocol}_rx3.bgp")
         log.debug("BGP Update Session RX3: %s", session)
-        time.sleep(5)
         session = bgp_update(bbl, routers["rx4"][link_protocol], f"/tmp/{router}_{link_protocol}_rx4.bgp")
         log.debug("BGP Update Session RX4: %s", session)
-        time.sleep(5)
         session = bgp_update(bbl, routers["rx3"][link_protocol], f"/tmp/{router}_{link_protocol}_rx3-withdraw.bgp")
         log.debug("BGP Update Withdraw Session RX3: %s", session)
-        time.sleep(5)
         session = bgp_update(bbl, routers["rx4"][link_protocol], f"/tmp/{router}_{link_protocol}_rx4-withdraw.bgp")
         log.debug("BGP Update Withdraw Session RX4: %s", session)
-        time.sleep(10)
         log.debug("BGP Update Withdraw Session RX4: %s", session)
         if stop():
             log.info("Stopping BGP updates on RX3 and RX4")
