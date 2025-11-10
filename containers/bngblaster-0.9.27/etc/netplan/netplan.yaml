@@ -10,7 +10,7 @@ network:
       # addresses:
       # - 192.0.2.11/31
       # - 2001:db8:100::11/127
-    bird-2.16.1:
+    bird-2.17.2:
       dhcp4: false
       dhcp6: false
       link-local: []
@@ -35,7 +35,7 @@ network:
       # addresses:
       # - 192.0.2.13/31
       # - 2001:db8:100::13/127
-    bird-2.16.1-rx1:
+    bird-2.17.2-rx1:
       dhcp4: false
       dhcp6: false
       link-local: []
@@ -60,7 +60,7 @@ network:
       # addresses:
       # - 192.0.2.15/31
       # - 2001:db8:100::15/127
-    bird-2.16.1-rx2:
+    bird-2.17.2-rx2:
       dhcp4: false
       dhcp6: false
       link-local: []

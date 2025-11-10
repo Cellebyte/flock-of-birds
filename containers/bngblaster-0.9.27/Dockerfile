@@ -39,12 +39,13 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
        python3-scapy \
        python3-matplotlib \
        python3-requests \
+       jq \
     && apt-get clean \
     && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
     && rm -rf /var/lib/apt/lists/* \
     && touch -d "2 hours ago" /var/lib/apt/lists
 
-RUN wget -O /tmp/bngblaster.deb https://github.com/rtbrick/bngblaster/releases/download/0.9.25/bngblaster-0.9.25-ubuntu-24.04_amd64.deb \
+RUN wget -O /tmp/bngblaster.deb https://github.com/rtbrick/bngblaster/releases/download/0.9.26/bngblaster-0.9.26-ubuntu-24.04_amd64.deb \
     && dpkg -i /tmp/bngblaster.deb \
     && rm -f /tmp/bngblaster.deb
 

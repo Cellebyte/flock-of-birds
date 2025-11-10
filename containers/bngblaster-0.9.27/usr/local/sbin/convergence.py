@@ -78,9 +78,10 @@ def bgp_update(bbl: bngblaster.bngblaster, local_address: str, update_file=None,
     for _ in range(int(timeout/3)):
         time.sleep(3)
         try: 
-            response = bbl.command("bgp-sessions", arguments)
+            response = bbl.command("bgp-sessions")
             for session in response["bgp-sessions"]: 
-                if session["state"] == "established" and \
+                if session["local-address"] == local_address and \
+                    session["state"] == "established" and \
                     session["raw-update-state"] == "done" and \
                     session["raw-update-start-epoch"] > 0 and \
                     session["raw-update-stop-epoch"] > 0:
@@ -88,6 +89,7 @@ def bgp_update(bbl: bngblaster.bngblaster, local_address: str, update_file=None,
                     return session
         except:
             pass
+
 
 def log_interface_pps(bbl: bngblaster.bngblaster, log: logging.Logger):
     try:
@@ -133,17 +135,19 @@ def main():
             }
     }
 
-    log.info("Init BNG Blaster test: %s", f"{args.router}_{args.instance}")
-    bbl = bngblaster.bngblaster(args.host, args.port, f"{args.router}_{args.instance}")
-    log.info("BNG Blaster URL: %s", bbl.base_url)
-    bbl.create(f"/etc/bngblaster/{args.router}.json")
-    for link_protocol in ["ipv4", "ipv6"]:
+    for link_protocol in ["ipv4"]:
+        #["ipv4", "ipv6"]:
+        log.info("Init BNG Blaster test: %s", f"{args.router}_{link_protocol}_{args.instance}")
+        bbl = bngblaster.bngblaster(args.host, args.port, f"{args.router}_{link_protocol}_{args.instance}")
+        log.info("BNG Blaster URL: %s", bbl.base_url)
+        bbl.create(f"/etc/bngblaster/{args.router}.json")
         BLASTER_ARGS["stream_config"] = f"/tmp/{args.router}_{link_protocol}_streams.json"
         bbl.start(BLASTER_ARGS)
         log.info("BNG Blaster status: %s", bbl.status())
 
         log.info("Wait for BGP updates from RX1")
         session = bgp_update(bbl, routers["rx1"][link_protocol], f"/tmp/{args.router}_{link_protocol}_rx1.bgp")
+        log.debug("BGP Update Session: %s", session)
         t1 = session["raw-update-start-epoch"]
         t2 = 0
         t3 = 0

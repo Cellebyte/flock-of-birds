@@ -34,8 +34,8 @@ FROM base
 RUN wget -O /usr/share/keyrings/cznic-labs-pkg.gpg https://pkg.labs.nic.cz/gpg && \
     echo "deb [signed-by=/usr/share/keyrings/cznic-labs-pkg.gpg] https://pkg.labs.nic.cz/bird2 noble main" | tee /etc/apt/sources.list.d/cznic-labs-bird2.list 
 
-RUN apt-get update -y && apt-get install -y --no-install-recommends \
-       bird2 \
+RUN apt-get update -y && apt install -y --no-install-recommends \
+       bird2=2.17.2-cznic.1~noble \
     && apt-get clean \
     && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
     && rm -rf /var/lib/apt/lists/* \

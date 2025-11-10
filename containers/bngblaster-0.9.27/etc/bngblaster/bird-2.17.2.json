@@ -5,41 +5,41 @@
         "io-slots": 32768,
         "links": [
             {
-                "__comment__": "bird-2.16.1 TX",
-                "interface": "bird-2.16.1",
+                "__comment__": "bird-2.17.2 TX",
+                "interface": "bird-2.17.2",
                 "tx-threads": 8
             },
             {
-                "__comment__": "bird-2.16.1 RX1",
-                "interface": "bird-2.16.1-rx1",
+                "__comment__": "bird-2.17.2 RX1",
+                "interface": "bird-2.17.2-rx1",
                 "rx-threads": 8
             },
             {
-                "__comment__": "bird-2.16.1 RX2",
-                "interface": "bird-2.16.1-rx2",
+                "__comment__": "bird-2.17.2 RX2",
+                "interface": "bird-2.17.2-rx2",
                 "rx-threads": 8
             }
         ],
         "network": [
             {
-                "__comment__": "bird-2.16.1 TX",
-                "interface": "bird-2.16.1",
+                "__comment__": "bird-2.17.2 TX",
+                "interface": "bird-2.17.2",
                 "address": "192.0.2.21/31",
                 "gateway": "192.0.2.20",
                 "address-ipv6": "2001:db8:100::21/127",
                 "gateway-ipv6": "2001:db8:100::20"
             },
             {
-                "__comment__": "bird-2.16.1 RX1",
-                "interface": "bird-2.16.1-rx1",
+                "__comment__": "bird-2.17.2 RX1",
+                "interface": "bird-2.17.2-rx1",
                 "address": "192.0.2.23/31",
                 "gateway": "192.0.2.22",
                 "address-ipv6": "2001:db8:100::23/127",
                 "gateway-ipv6": "2001:db8:100::22"
             },
             {
-                "__comment__": "bird-2.16.1 RX2",
-                "interface": "bird-2.16.1-rx2",
+                "__comment__": "bird-2.17.2 RX2",
+                "interface": "bird-2.17.2-rx2",
                 "address": "192.0.2.25/31",
                 "gateway": "192.0.2.24",
                 "address-ipv6": "2001:db8:100::25/127",
@@ -52,23 +52,21 @@
             "__comment__": "bird-2.16-1 IPv4 TX",
             "local-address": "192.0.2.21",
             "peer-address": "192.0.2.20",
-            "network-interface": "bird-2.16.1",
+            "network-interface": "bird-2.17.2",
             "local-as": 4200000255,
             "peer-as": 4200000020,
             "family": [
-                "ipv4-unicast",
-                "ipv6-unicast"
+                "ipv4-unicast"
             ]
         },
         {
             "__comment__": "bird-2.16-1 IPv6 TX",
             "local-address": "2001:db8:100::21",
             "peer-address": "2001:db8:100::20",
-            "network-interface": "bird-2.16.1",
+            "network-interface": "bird-2.17.2",
             "local-as": 4200000255,
             "peer-as": 4200000020,
             "family": [
-                "ipv4-unicast",
                 "ipv6-unicast"
             ]
         },
@@ -76,25 +74,23 @@
             "__comment__": "bird-2.16-1 IPv4 RX1",
             "local-address": "192.0.2.23",
             "peer-address": "192.0.2.22",
-            "raw-update-file": "/tmp/bird-2.16.1_ipv4_rx1.bgp",
-            "network-interface": "bird-2.16.1-rx1",
+            "raw-update-file": "/tmp/bird-2.17.2_ipv4_rx1.bgp",
+            "network-interface": "bird-2.17.2-rx1",
             "local-as": 4200000255,
             "peer-as": 4200000020,
             "family": [
-                "ipv4-unicast",
-                "ipv6-unicast"
+                "ipv4-unicast"
             ]
         },
         {
             "__comment__": "bird-2.16-1 IPv6 RX1",
             "local-address": "2001:db8:100::23",
             "peer-address": "2001:db8:100::22",
-            "raw-update-file": "/tmp/bird-2.16.1_ipv6_rx1.bgp",
-            "network-interface": "bird-2.16.1-rx1",
+            "raw-update-file": "/tmp/bird-2.17.2_ipv6_rx1.bgp",
+            "network-interface": "bird-2.17.2-rx1",
             "local-as": 4200000255,
             "peer-as": 4200000020,
             "family": [
-                "ipv4-unicast",
                 "ipv6-unicast"
             ]
         },
@@ -102,35 +98,33 @@
             "__comment__": "bird-2.16-1 IPv4 RX2",
             "local-address": "192.0.2.25",
             "peer-address": "192.0.2.24",
-            "network-interface": "bird-2.16.1-rx2",
+            "network-interface": "bird-2.17.2-rx2",
             "local-as": 4200000255,
             "peer-as": 4200000020,
             "family": [
-                "ipv4-unicast",
-                "ipv6-unicast"
+                "ipv4-unicast"
             ]
         },
         {
             "__comment__": "bird-2.16-1 IPv6 RX2",
             "local-address": "2001:db8:100::25",
             "peer-address": "2001:db8:100::24",
-            "network-interface": "bird-2.16.1-rx2",
+            "network-interface": "bird-2.17.2-rx2",
             "local-as": 4200000255,
             "peer-as": 4200000020,
             "family": [
-                "ipv4-unicast",
                 "ipv6-unicast"
             ]
         }
     ],
     "bgp-raw-update-files": [
-        "/tmp/bird-2.16.1_ipv4_rx1.bgp",
-        "/tmp/bird-2.16.1_ipv6_rx1.bgp",
-        "/tmp/bird-2.16.1_ipv4_rx2.bgp",
-        "/tmp/bird-2.16.1_ipv6_rx2.bgp",
-        "/tmp/bird-2.16.1_ipv4_rx1-withdraw.bgp",
-        "/tmp/bird-2.16.1_ipv6_rx1-withdraw.bgp",
-        "/tmp/bird-2.16.1_ipv4_rx2-withdraw.bgp",
-        "/tmp/bird-2.16.1_ipv6_rx2-withdraw.bgp"
+        "/tmp/bird-2.17.2_ipv4_rx1.bgp",
+        "/tmp/bird-2.17.2_ipv6_rx1.bgp",
+        "/tmp/bird-2.17.2_ipv4_rx2.bgp",
+        "/tmp/bird-2.17.2_ipv6_rx2.bgp",
+        "/tmp/bird-2.17.2_ipv4_rx1-withdraw.bgp",
+        "/tmp/bird-2.17.2_ipv6_rx1-withdraw.bgp",
+        "/tmp/bird-2.17.2_ipv4_rx2-withdraw.bgp",
+        "/tmp/bird-2.17.2_ipv6_rx2-withdraw.bgp"
     ]
 }
