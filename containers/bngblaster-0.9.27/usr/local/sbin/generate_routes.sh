@@ -9,15 +9,15 @@ declare -r RX1_IP6=$3
 declare -r RX2_IP=$4
 declare -r RX2_IP6=$5
 
-declare -r ROUTE_COUNT=90000
+declare -r ROUTE_COUNT=100000
 
 # IPv4 updates for RX1
-bgpupdate -f "/tmp/${ROUTER}_ipv4_rx1.bgp" -a 4200000255 --med 10 -n "${RX1_IP}" -N 1 -p 198.18.0.0/31 -P "${ROUTE_COUNT}" --end-of-rib \
+bgpupdate -f "/tmp/${ROUTER}_ipv4_rx1.bgp" -a 4200000255 --med 10 -n "${RX1_IP}" -N 1 -p 198.18.0.0/32 -P "${ROUTE_COUNT}" --end-of-rib \
     -s "/tmp/${ROUTER}_ipv4_streams.json" \
     --stream-direction downstream \
     --stream-pps 1 \
     --stream-interface "${ROUTER}-rx1"
-bgpupdate -f "/tmp/${ROUTER}_ipv4_rx1-withdraw.bgp" -a 4200000255 --med 10 -n "${RX1_IP}" -N 1 -p 198.18.0.0/31 -P "${ROUTE_COUNT}" --withdraw --end-of-rib
+bgpupdate -f "/tmp/${ROUTER}_ipv4_rx1-withdraw.bgp" -a 4200000255 --med 10 -n "${RX1_IP}" -N 1 -p 198.18.0.0/32 -P "${ROUTE_COUNT}" --withdraw --end-of-rib
 
 
 # IPv6 updates for RX1
@@ -30,8 +30,8 @@ bgpupdate -f "/tmp/${ROUTER}_ipv6_rx1-withdraw.bgp" -a 4200000255 --med 10 -n "$
 
 
 # IPv4 updates for RX2
-bgpupdate -f "/tmp/${ROUTER}_ipv4_rx2.bgp" -a 4200000255 --med 100 -n "${RX2_IP}" -N 1 -p 198.18.0.0/31 -P "${ROUTE_COUNT}" --end-of-rib
-bgpupdate -f "/tmp/${ROUTER}_ipv4_rx2-withdraw.bgp" -a 4200000255 --med 100 -n "${RX2_IP}" -N 1 -p 198.18.0.0/31 -P "${ROUTE_COUNT}" --withdraw --end-of-rib
+bgpupdate -f "/tmp/${ROUTER}_ipv4_rx2.bgp" -a 4200000255 --med 100 -n "${RX2_IP}" -N 1 -p 198.18.0.0/32 -P "${ROUTE_COUNT}" --end-of-rib
+bgpupdate -f "/tmp/${ROUTER}_ipv4_rx2-withdraw.bgp" -a 4200000255 --med 100 -n "${RX2_IP}" -N 1 -p 198.18.0.0/32 -P "${ROUTE_COUNT}" --withdraw --end-of-rib
 
 # IPv6 updates for RX2
 bgpupdate -f "/tmp/${ROUTER}_ipv6_rx2.bgp" -a 4200000255 --med 100 -n "${RX2_IP6}" -N 1 -p 2001:db8:ffff::/76 -P "${ROUTE_COUNT}" --end-of-rib

@@ -22,3 +22,12 @@ network:
       addresses:
       - 198.51.100.1/32
       - 2001:db8::1/128
+      routes:
+      - to: 198.18.0.0/15
+        type: blackhole
+        via: "0.0.0.0"
+        metric: 240
+      - to: 2001:db8:ffff::/56
+        type: blackhole
+        via: "::"
+        metric: 240
