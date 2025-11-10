@@ -10,14 +10,14 @@ topology:
         - containers/bird-1.6.8/etc/bird/bird.conf:/etc/bird/bird.conf
         - containers/bird-1.6.8//etc/bird/bird6.conf:/etc/bird/bird6.conf
         - containers/bird-1.6.8/etc/netplan/netplan.yaml:/etc/netplan/00-netplan.yaml
-    bird-2.16.1:
+    bird-2.17.2:
       kind: linux
-      image: docker.io/library/bird:2.16.1
+      image: docker.io/library/bird:2.17.2
       #shm-size: 4gib
       #cpu-set: 2-9
       binds:
-        - containers/bird-2.16.1/etc/bird/bird.conf:/etc/bird/bird.conf
-        - containers/bird-2.16.1/etc/netplan/netplan.yaml:/etc/netplan/00-netplan.yaml
+        - containers/bird-2.17.2/etc/bird/bird.conf:/etc/bird/bird.conf
+        - containers/bird-2.17.2/etc/netplan/netplan.yaml:/etc/netplan/00-netplan.yaml
     bird-3.1.4:
       kind: linux
       image: docker.io/library/bird:3.1.4
@@ -27,48 +27,48 @@ topology:
         - containers/bird-3.1.4/etc/netplan/netplan.yaml:/etc/netplan/00-netplan.yaml
         - containers/bird-3.1.4/etc/bird/bird.conf:/etc/bird/bird.conf
 
-    # competing projects
-    frr-10.4.1:
-      kind: linux
-      image: docker.io/library/frr:10.4.1
-      #shm-size: 4gib
-      #cpu-set: 2-9
-      binds:
-        - containers/frr-10.4.1/etc/netplan/netplan.yaml:/etc/netplan/00-netplan.yaml
-    gobgp-3.36.0:
-      kind: linux
-      image: docker.io/library/gobgp:3.36.0
-      #shm-size: 4gib
-      #cpu-set: 2-9
-      binds:
-        - containers/gobgp-3.36.0/etc/netplan/netplan.yaml:/etc/netplan/00-netplan.yaml
-        - containers/gobgp-3.36.0/etc/gobgpd.conf:/etc/gobgpd.conf
+    # # competing projects
+    # frr-10.4.1:
+    #   kind: linux
+    #   image: docker.io/library/frr:10.4.1
+    #   #shm-size: 4gib
+    #   #cpu-set: 2-9
+    #   binds:
+    #     - containers/frr-10.4.1/etc/netplan/netplan.yaml:/etc/netplan/00-netplan.yaml
+    # gobgp-3.36.0:
+    #   kind: linux
+    #   image: docker.io/library/gobgp:3.36.0
+    #   #shm-size: 4gib
+    #   #cpu-set: 2-9
+    #   binds:
+    #     - containers/gobgp-3.36.0/etc/netplan/netplan.yaml:/etc/netplan/00-netplan.yaml
+    #     - containers/gobgp-3.36.0/etc/gobgpd.conf:/etc/gobgpd.conf
 
-    bngblaster-0.9.25:
+    bngblaster-0.9.27:
       kind: linux
-      image: docker.io/library/bngblaster:0.9.25
+      image: docker.io/library/bngblaster:0.9.27
       #shm-size: 8gib
-      cpu-set: 10-15
+      #cpu-set: 10-15
       binds:
-        - containers/bngblaster-0.9.25/etc/netplan/netplan.yaml:/etc/netplan/00-netplan.yaml
-        - containers/bngblaster-0.9.25/etc/bngblaster:/etc/bngblaster
-        - containers/bngblaster-0.9.25/usr/local/sbin/:/usr/local/sbin
+        - containers/bngblaster-0.9.27/etc/netplan/netplan.yaml:/etc/netplan/00-netplan.yaml
+        - containers/bngblaster-0.9.27/etc/bngblaster:/etc/bngblaster
+        - containers/bngblaster-0.9.27/usr/local/sbin/:/usr/local/sbin
   links:
     # TX
-    - endpoints: ["bird-1.6.8:uplink", "bngblaster-0.9.25:bird-1.6.8"]
-    - endpoints: ["bird-2.16.1:uplink", "bngblaster-0.9.25:bird-2.16.1"]
-    - endpoints: ["bird-3.1.4:uplink", "bngblaster-0.9.25:bird-3.1.4"]
-    - endpoints: ["frr-10.4.1:uplink", "bngblaster-0.9.25:frr-10.4.1"]
-    - endpoints: ["gobgp-3.36.0:uplink", "bngblaster-0.9.25:gobgp-3.36.0"]
+    - endpoints: ["bird-1.6.8:uplink", "bngblaster-0.9.27:bird-1.6.8"]
+    - endpoints: ["bird-2.17.2:uplink", "bngblaster-0.9.27:bird-2.17.2"]
+    - endpoints: ["bird-3.1.4:uplink", "bngblaster-0.9.27:bird-3.1.4"]
+    # - endpoints: ["frr-10.4.1:uplink", "bngblaster-0.9.27:frr-10.4.1"]
+    # - endpoints: ["gobgp-3.36.0:uplink", "bngblaster-0.9.27:gobgp-3.36.0"]
     # RX1
-    - endpoints: ["bird-1.6.8:uplink-rx1", "bngblaster-0.9.25:bird-1.6.8-rx1"]
-    - endpoints: ["bird-2.16.1:uplink-rx1", "bngblaster-0.9.25:bird-2.16.1-rx1"]
-    - endpoints: ["bird-3.1.4:uplink-rx1", "bngblaster-0.9.25:bird-3.1.4-rx1"]
-    - endpoints: ["frr-10.4.1:uplink-rx1", "bngblaster-0.9.25:frr-10.4.1-rx1"]
-    - endpoints: ["gobgp-3.36.0:uplink-rx1", "bngblaster-0.9.25:gobgp-3.36.0-rx1"]
+    - endpoints: ["bird-1.6.8:uplink-rx1", "bngblaster-0.9.27:bird-1.6.8-rx1"]
+    - endpoints: ["bird-2.17.2:uplink-rx1", "bngblaster-0.9.27:bird-2.17.2-rx1"]
+    - endpoints: ["bird-3.1.4:uplink-rx1", "bngblaster-0.9.27:bird-3.1.4-rx1"]
+    # - endpoints: ["frr-10.4.1:uplink-rx1", "bngblaster-0.9.27:frr-10.4.1-rx1"]
+    # - endpoints: ["gobgp-3.36.0:uplink-rx1", "bngblaster-0.9.27:gobgp-3.36.0-rx1"]
     # RX2
-    - endpoints: ["bird-1.6.8:uplink-rx2", "bngblaster-0.9.25:bird-1.6.8-rx2"]
-    - endpoints: ["bird-2.16.1:uplink-rx2", "bngblaster-0.9.25:bird-2.16.1-rx2"]
-    - endpoints: ["bird-3.1.4:uplink-rx2", "bngblaster-0.9.25:bird-3.1.4-rx2"]
-    - endpoints: ["frr-10.4.1:uplink-rx2", "bngblaster-0.9.25:frr-10.4.1-rx2"]
-    - endpoints: ["gobgp-3.36.0:uplink-rx2", "bngblaster-0.9.25:gobgp-3.36.0-rx2"]
+    - endpoints: ["bird-1.6.8:uplink-rx2", "bngblaster-0.9.27:bird-1.6.8-rx2"]
+    - endpoints: ["bird-2.17.2:uplink-rx2", "bngblaster-0.9.27:bird-2.17.2-rx2"]
+    - endpoints: ["bird-3.1.4:uplink-rx2", "bngblaster-0.9.27:bird-3.1.4-rx2"]
+    # - endpoints: ["frr-10.4.1:uplink-rx2", "bngblaster-0.9.27:frr-10.4.1-rx2"]
+    # - endpoints: ["gobgp-3.36.0:uplink-rx2", "bngblaster-0.9.27:gobgp-3.36.0-rx2"]
