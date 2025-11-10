@@ -202,9 +202,17 @@
         "/tmp/bird-2.17.2_ipv6_rx1.bgp",
         "/tmp/bird-2.17.2_ipv4_rx2.bgp",
         "/tmp/bird-2.17.2_ipv6_rx2.bgp",
+        "/tmp/bird-2.17.2_ipv4_rx3.bgp",
+        "/tmp/bird-2.17.2_ipv6_rx3.bgp",
+        "/tmp/bird-2.17.2_ipv4_rx4.bgp",
+        "/tmp/bird-2.17.2_ipv6_rx4.bgp",
         "/tmp/bird-2.17.2_ipv4_rx1-withdraw.bgp",
         "/tmp/bird-2.17.2_ipv6_rx1-withdraw.bgp",
         "/tmp/bird-2.17.2_ipv4_rx2-withdraw.bgp",
-        "/tmp/bird-2.17.2_ipv6_rx2-withdraw.bgp"
+        "/tmp/bird-2.17.2_ipv6_rx2-withdraw.bgp",
+        "/tmp/bird-2.17.2_ipv4_rx3-withdraw.bgp",
+        "/tmp/bird-2.17.2_ipv6_rx3-withdraw.bgp",
+        "/tmp/bird-2.17.2_ipv4_rx4-withdraw.bgp",
+        "/tmp/bird-2.17.2_ipv6_rx4-withdraw.bgp"
     ]
 }

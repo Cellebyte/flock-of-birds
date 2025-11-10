@@ -85,24 +85,24 @@ network:
       link-local: []
       mtu: 9000
       # addresses:
-      # - 192.0.2.15/31
-      # - 2001:db8:100::15/127
+      # - 192.0.2.17/31
+      # - 2001:db8:100::17/127
     bird-2.17.2-rx3:
       dhcp4: false
       dhcp6: false
       link-local: []
       mtu: 9000
       # addresses:
-      # - 192.0.2.25/31
-      # - 2001:db8:100::25/127
+      # - 192.0.2.27/31
+      # - 2001:db8:100::27/127
     bird-3.1.4-rx3:
       dhcp4: false
       dhcp6: false
       link-local: []
       mtu: 9000
       # addresses:
-      # - 192.0.2.35/31
-      # - 2001:db8:100::35/127
+      # - 192.0.2.37/31
+      # - 2001:db8:100::37/127
     # RX4 interfaces
     bird-1.6.8-rx4:
       dhcp4: false
@@ -110,24 +110,24 @@ network:
       link-local: []
       mtu: 9000
       # addresses:
-      # - 192.0.2.15/31
-      # - 2001:db8:100::15/127
+      # - 192.0.2.19/31
+      # - 2001:db8:100::19/127
     bird-2.17.2-rx4:
       dhcp4: false
       dhcp6: false
       link-local: []
       mtu: 9000
       # addresses:
-      # - 192.0.2.25/31
-      # - 2001:db8:100::25/127
+      # - 192.0.2.29/31
+      # - 2001:db8:100::29/127
     bird-3.1.4-rx4:
       dhcp4: false
       dhcp6: false
       link-local: []
       mtu: 9000
       # addresses:
-      # - 192.0.2.35/31
-      # - 2001:db8:100::35/127
+      # - 192.0.2.39/31
+      # - 2001:db8:100::39/127
   dummy-devices:
     lo42:
       link-local: []

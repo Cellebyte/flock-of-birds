@@ -3,32 +3,38 @@ network:
   version: 2
   ethernets:
     uplink:
+      link-local: []
       mtu: 9000
       addresses:
       - 192.0.2.20/31
       - 2001:db8:100::20/127
     uplink-rx1:
+      link-local: []
       mtu: 9000
       addresses:
       - 192.0.2.22/31
       - 2001:db8:100::22/127
     uplink-rx2:
+      link-local: []
       mtu: 9000
       addresses:
       - 192.0.2.24/31
       - 2001:db8:100::24/127
     uplink-rx3:
+      link-local: []
       mtu: 9000
       addresses:
       - 192.0.2.26/31
       - 2001:db8:100::26/127
     uplink-rx4:
+      link-local: []
       mtu: 9000
       addresses:
       - 192.0.2.28/31
       - 2001:db8:100::28/127
   dummy-devices:
     lo42:
+      link-local: []
       addresses:
       - 198.51.100.2/32
       - 2001:db8::2/128
@@ -37,7 +43,15 @@ network:
         type: blackhole
         via: "0.0.0.0"
         metric: 240
+      - to: 10.0.0.0/8
+        type: blackhole
+        via: "0.0.0.0"
+        metric: 240
       - to: 2001:db8:ffff::/56
+        type: blackhole
+        via: "::"
+        metric: 240
+      - to: 2001:db8:eeee::/56
         type: blackhole
         via: "::"
         metric: 240

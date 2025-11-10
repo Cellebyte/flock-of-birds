@@ -16,6 +16,7 @@ import json
 import matplotlib.pyplot as plt
 from collections import Counter
 import bngblaster
+import threading
 
 DESCRIPTION = """
 BNG Blaster - BGP Convergence Report
@@ -102,6 +103,27 @@ def log_interface_pps(bbl: bngblaster.bngblaster, log: logging.Logger):
     except:
         pass
 
+def side_quest(bbl: bngblaster.bngblaster, log: logging.Logger, router: str, routers: dict, link_protocol, stop):
+    log.info("Running BGP neighbors which sync routes RX3: {}, RX4: {}".format(routers["rx3"], routers["rx4"]))
+    while True:
+        session = bgp_update(bbl, routers["rx3"][link_protocol], f"/tmp/{router}_{link_protocol}_rx3.bgp")
+        log.debug("BGP Update Session RX3: %s", session)
+        time.sleep(5)
+        session = bgp_update(bbl, routers["rx4"][link_protocol], f"/tmp/{router}_{link_protocol}_rx4.bgp")
+        log.debug("BGP Update Session RX4: %s", session)
+        time.sleep(5)
+        session = bgp_update(bbl, routers["rx3"][link_protocol], f"/tmp/{router}_{link_protocol}_rx3-withdraw.bgp")
+        log.debug("BGP Update Withdraw Session RX3: %s", session)
+        time.sleep(5)
+        session = bgp_update(bbl, routers["rx4"][link_protocol], f"/tmp/{router}_{link_protocol}_rx4-withdraw.bgp")
+        log.debug("BGP Update Withdraw Session RX4: %s", session)
+        time.sleep(10)
+        log.debug("BGP Update Withdraw Session RX4: %s", session)
+        if stop():
+            log.info("Stopping BGP updates on RX3 and RX4")
+            break
+    log.info("Stopped BGP updates on RX3 and RX4.")
+
 # ==== #
 # MAIN #
 # ==== #
@@ -116,6 +138,10 @@ def main():
     parser.add_argument('--rx1-ip6', type=str, default="2001:db8:100::33", help="RX1 local IPv6")
     parser.add_argument('--rx2-ip', type=str, default="192.0.2.35", help="RX2 local IP")
     parser.add_argument('--rx2-ip6', type=str, default="2001:db8:100::35", help="RX2 local IPv6")
+    parser.add_argument('--rx3-ip', type=str, default="192.0.2.37", help="RX3 local IP")
+    parser.add_argument('--rx3-ip6', type=str, default="2001:db8:100::37", help="RX3 local IPv6")
+    parser.add_argument('--rx4-ip', type=str, default="192.0.2.39", help="RX4 local IP")
+    parser.add_argument('--rx4-ip6', type=str, default="2001:db8:100::39", help="RX4 local IPv6")
     parser.add_argument('--timeout', type=int, default=120, help='Max convergence time expected')
     parser.add_argument('--router', type=str, default="bird-3.1.4", help='Router configuration to use')
     parser.add_argument('--log-level', type=str, default='info', choices=LOG_LEVELS.keys(), help='logging Level')
@@ -133,6 +159,16 @@ def main():
             {
                 "ipv4": args.rx2_ip,
                 "ipv6": args.rx2_ip6
+            },
+        "rx3":
+            {
+                "ipv4": args.rx3_ip,
+                "ipv6": args.rx3_ip6
+            },
+        "rx4":
+            {
+                "ipv4": args.rx4_ip,
+                "ipv6": args.rx4_ip6
             }
     }
 
@@ -146,8 +182,16 @@ def main():
         bbl.start(BLASTER_ARGS)
         log.info("BNG Blaster status: %s", bbl.status())
 
+        # TODO: Start a thread which migrates routes from rx3 to rx4.
+        STOP_THREAD = False
+        quest = threading.Thread(target=side_quest, args=(bbl, log, args.router, routers, link_protocol, lambda: STOP_THREAD))
+        quest.start()
+
         log.info("Wait for BGP updates from RX1")
         session = bgp_update(bbl, routers["rx1"][link_protocol], f"/tmp/{args.router}_{link_protocol}_rx1.bgp")
+        if not session:
+            STOP_THREAD = True
+            quest.join()
         log.debug("BGP Update Session: %s", session)
         t1 = session["raw-update-start-epoch"]
         t2 = 0
@@ -200,6 +244,9 @@ def main():
             log_interface_pps(bbl, log)
 
         log.info("Stop test")
+        # TODO: Stop the thread which migrates routes
+        STOP_THREAD = True
+        quest.join()
         bbl.stop()
         for _ in range(12):
             time.sleep(10)

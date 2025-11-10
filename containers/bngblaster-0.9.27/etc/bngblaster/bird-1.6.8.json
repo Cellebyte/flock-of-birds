@@ -153,6 +153,7 @@
             "local-address": "192.0.2.17",
             "peer-address": "192.0.2.16",
             "network-interface": "bird-1.6.8-rx3",
+            "raw-update-file": "/tmp/bird-1.6.8_ipv4_rx3.bgp",
             "local-as": 4200000255,
             "peer-as": 4200000010,
             "hold-time": 30,
@@ -202,9 +203,17 @@
         "/tmp/bird-1.6.8_ipv6_rx1.bgp",
         "/tmp/bird-1.6.8_ipv4_rx2.bgp",
         "/tmp/bird-1.6.8_ipv6_rx2.bgp",
+        "/tmp/bird-1.6.8_ipv4_rx3.bgp",
+        "/tmp/bird-1.6.8_ipv6_rx3.bgp",
+        "/tmp/bird-1.6.8_ipv4_rx4.bgp",
+        "/tmp/bird-1.6.8_ipv6_rx4.bgp",
         "/tmp/bird-1.6.8_ipv4_rx1-withdraw.bgp",
         "/tmp/bird-1.6.8_ipv6_rx1-withdraw.bgp",
         "/tmp/bird-1.6.8_ipv4_rx2-withdraw.bgp",
-        "/tmp/bird-1.6.8_ipv6_rx2-withdraw.bgp"
+        "/tmp/bird-1.6.8_ipv6_rx2-withdraw.bgp",
+        "/tmp/bird-1.6.8_ipv4_rx3-withdraw.bgp",
+        "/tmp/bird-1.6.8_ipv6_rx3-withdraw.bgp",
+        "/tmp/bird-1.6.8_ipv4_rx4-withdraw.bgp",
+        "/tmp/bird-1.6.8_ipv6_rx4-withdraw.bgp"
     ]
 }
