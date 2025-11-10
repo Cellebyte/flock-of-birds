@@ -48,11 +48,11 @@ topology:
       kind: linux
       image: docker.io/library/bngblaster:0.9.25
       #shm-size: 8gib
-      #cpu-set: 10-15
+      cpu-set: 10-15
       binds:
         - containers/bngblaster-0.9.25/etc/netplan/netplan.yaml:/etc/netplan/00-netplan.yaml
         - containers/bngblaster-0.9.25/etc/bngblaster:/etc/bngblaster
-        - containers/bngblaster-0.9.25/usr/local/bin/:/usr/local/bin
+        - containers/bngblaster-0.9.25/usr/local/sbin/:/usr/local/sbin
   links:
     # TX
     - endpoints: ["bird-1.6.8:uplink", "bngblaster-0.9.25:bird-1.6.8"]

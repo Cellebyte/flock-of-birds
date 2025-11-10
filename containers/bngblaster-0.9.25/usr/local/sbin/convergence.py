@@ -109,10 +109,10 @@ def main():
     parser.add_argument('--host', type=str, required=True, help="BNG Blaster Controller")
     parser.add_argument('--port', type=int, default=8001, help="BNG Blaster Controller Port")
     parser.add_argument('--instance', type=str, default="convergence", help="BNG Blaster Controller Instance")
-    parser.add_argument('--rx1ip', type=str, default="192.0.2.33", help="RX1 local IP")
-    parser.add_argument('--rx1ip6', type=str, default="2001:db8:100::33", help="RX1 local IPv6")
-    parser.add_argument('--rx2ip', type=str, default="192.0.2.35", help="RX2 local IP")
-    parser.add_argument('--rx2ip6', type=str, default="2001:db8:100::35", help="RX2 local IPv6")
+    parser.add_argument('--rx1-ip', type=str, default="192.0.2.33", help="RX1 local IP")
+    parser.add_argument('--rx1-ip6', type=str, default="2001:db8:100::33", help="RX1 local IPv6")
+    parser.add_argument('--rx2-ip', type=str, default="192.0.2.35", help="RX2 local IP")
+    parser.add_argument('--rx2-ip6', type=str, default="2001:db8:100::35", help="RX2 local IPv6")
     parser.add_argument('--timeout', type=int, default=120, help='Max convergence time expected')
     parser.add_argument('--router', type=str, default="bird-3.1.4", help='Router configuration to use')
     parser.add_argument('--log-level', type=str, default='info', choices=LOG_LEVELS.keys(), help='logging Level')
@@ -123,22 +123,22 @@ def main():
     routers = {
         "rx1":
             {
-                "ipv4": args.rx1ip,
-                "ipv6": args.rx1ip6
+                "ipv4": args.rx1_ip,
+                "ipv6": args.rx1_ip6
             },
         "rx2":
             {
-                "ipv4": args.rx2ip,
-                "ipv6": args.rx2ip6
+                "ipv4": args.rx2_ip,
+                "ipv6": args.rx2_ip6
             }
     }
 
-    log.info("Init BNG Blaster test: %s", args.instance)
-    bbl = bngblaster.bngblaster(args.host, args.port, args.instance)
+    log.info("Init BNG Blaster test: %s", f"{args.router}_{args.instance}")
+    bbl = bngblaster.bngblaster(args.host, args.port, f"{args.router}_{args.instance}")
     log.info("BNG Blaster URL: %s", bbl.base_url)
-    bbl.create("/etc/bngblaster/blaster.json")
+    bbl.create(f"/etc/bngblaster/{args.router}.json")
     for link_protocol in ["ipv4", "ipv6"]:
-        BLASTER_ARGS["stream_config"] = f"/tmp/{args.router}_{link_protocol}.json"
+        BLASTER_ARGS["stream_config"] = f"/tmp/{args.router}_{link_protocol}_streams.json"
         bbl.start(BLASTER_ARGS)
         log.info("BNG Blaster status: %s", bbl.status())
 
@@ -177,7 +177,7 @@ def main():
         log_interface_pps(bbl, log)
 
         log.info("Withdraw prefixes from RX1")
-        session = bgp_update(bbl, routers["rx1"][link_protocol], f"/tmp/{router}_{link_protocol}_rx1-withdraw.bgp")
+        session = bgp_update(bbl, routers["rx1"][link_protocol], f"/tmp/{args.router}_{link_protocol}_rx1-withdraw.bgp")
         t2 = session["raw-update-start-epoch"]
 
         log.info("Wait %s seconds", args.timeout)
@@ -186,7 +186,7 @@ def main():
             log_interface_pps(bbl, log)
 
         log.info("Withdraw prefixes from RX2")
-        session = bgp_update(bbl, routers["rx2"][link_protocol], f"/tmp/{router}_{link_protocol}_rx2-withdraw.bgp")
+        session = bgp_update(bbl, routers["rx2"][link_protocol], f"/tmp/{args.router}_{link_protocol}_rx2-withdraw.bgp")
         t3 = session["raw-update-start-epoch"]
 
         log.info("Wait %s seconds", args.timeout)
@@ -203,11 +203,11 @@ def main():
 
         time.sleep(30)
         log.info("Download report")
-        bbl.download(f"{router}_{link_protocol}_run_report.json")
+        bbl.download(f"run_report.json")
 
         # load JSON report 
-        log.info(f"Load JSON report file {router}_{link_protocol}_run_report.json")
-        with open(f"{router}_{link_protocol}_run_report.json", "r") as json_file:
+        log.info(f"Load JSON report file run_report.json")
+        with open(f"run_report.json", "r") as json_file:
             data = json.load(json_file)
 
         # get test dudaration from report
@@ -269,7 +269,7 @@ def main():
         log.info("C3: %s seconds", c3)
 
         # generate output files
-        generate_png(f"{router}_{link_protocol}_result.png" result_array)
+        generate_png(f"{args.router}_{link_protocol}_result.png", result_array)
 
 
 if __name__ == "__main__":

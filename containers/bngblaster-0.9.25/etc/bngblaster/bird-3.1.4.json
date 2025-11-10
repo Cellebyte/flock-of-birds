@@ -51,6 +51,7 @@
             "__comment__": "bird-3.1.4 IPv4 TX",
             "local-address": "192.0.2.31",
             "peer-address": "192.0.2.30",
+            "network-interface": "bird-3.1.4",
             "local-as": 4200000255,
             "peer-as": 4200000030,
             "family": [
@@ -62,6 +63,7 @@
             "__comment__": "bird-3.1.4 IPv6 TX",
             "local-address": "2001:db8:100::31",
             "peer-address": "2001:db8:100::30",
+            "network-interface": "bird-3.1.4",
             "local-as": 4200000255,
             "peer-as": 4200000030,
             "family": [
@@ -74,6 +76,7 @@
             "local-address": "192.0.2.33",
             "peer-address": "192.0.2.32",
             "raw-update-file": "/tmp/bird-3.1.4_ipv4_rx1.bgp",
+            "network-interface": "bird-3.1.4-rx1",
             "local-as": 4200000255,
             "peer-as": 4200000030,
             "family": [
@@ -86,6 +89,7 @@
             "local-address": "2001:db8:100::33",
             "peer-address": "2001:db8:100::32",
             "raw-update-file": "/tmp/bird-3.1.4_ipv6_rx1.bgp",
+            "network-interface": "bird-3.1.4-rx1",
             "local-as": 4200000255,
             "peer-as": 4200000030,
             "family": [
@@ -97,6 +101,7 @@
             "__comment__": "bird-3.1.4 IPv4 RX2",
             "local-address": "192.0.2.35",
             "peer-address": "192.0.2.34",
+            "network-interface": "bird-3.1.4-rx2",
             "local-as": 4200000255,
             "peer-as": 4200000030,
             "family": [
@@ -108,6 +113,7 @@
             "__comment__": "bird-3.1.4 IPv6 RX2",
             "local-address": "2001:db8:100::35",
             "peer-address": "2001:db8:100::34",
+            "network-interface": "bird-3.1.4-rx2",
             "local-as": 4200000255,
             "peer-as": 4200000030,
             "family": [
